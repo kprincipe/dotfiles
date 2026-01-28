@@ -14,6 +14,8 @@ vim.cmd[[
     set ignorecase
     set smartcase
     set autoindent
+    set backupcopy=yes
+    set clipboard=unnamedplus
     
     " set autochdir
        
@@ -46,6 +48,10 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.opt.conceallevel = 3
   end,
 })
+
+-- Keymaps
+vim.keymap.set("n", "<leader>k", "ddkP")
+vim.keymap.set("n", "<leader>j", "ddp")
 
 -- MDN
 vim.keymap.set("n", "<leader>nn", function()
