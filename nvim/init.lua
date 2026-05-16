@@ -19,7 +19,7 @@ vim.cmd[[
     
     " set autochdir
        
-    " set tags=./tags,tags;$HOME
+    set tags=./tags,tags;$HOME
 
     call plug#begin()
     
@@ -27,7 +27,6 @@ vim.cmd[[
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'preservim/nerdtree'
 
     call plug#end()
 
@@ -44,12 +43,12 @@ vim.opt.signcolumn = "yes"
 vim.lsp.enable("marksman")
 -- vim.lsp.enable("jdtls")
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = { "markdown", "mkd" },
---   callback = function()
---       vim.opt.conceallevel = 3
---   end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "mkd" },
+  callback = function()
+      vim.opt.conceallevel = 3
+  end,
+})
 
 -- Keymaps
 vim.keymap.set("n", "<leader>k", "ddkP")
@@ -57,14 +56,5 @@ vim.keymap.set("n", "<leader>j", "ddp")
 
 -- Telescope
 vim.keymap.set("n", "<leader>t", ":Telescope<cr>")
-
--- NERDtree
-vim.keymap.set("n", "<leader>ff", ":NERDTreeToggle<cr>")
-
--- MDN
-vim.keymap.set("n", "<leader>nn", function()
-    local title = vim.fn.input("New note title: ")
-    mdn_create_note(title)
-end)
 
 vim.keymap.set("n", "<leader>fe", ":Ex<CR>")
